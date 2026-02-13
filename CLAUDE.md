@@ -19,7 +19,7 @@ IniTool is an Android app for tracking initiative order in the tabletop RPG "Das
 ## Architecture
 
 - **Language/UI:** Kotlin with Jetpack Compose (Material3), no XML layouts
-- **Navigation:** Jetpack Navigation Compose with three routes: `gegner` → `spieler` → `kampf`
+- **Navigation:** Jetpack Navigation Compose with four routes: `splash` → `gegner` → `spieler` → `kampf`
 - **Build:** Gradle KTS, KSP for Room annotation processing, Java 17 target, minSdk 26
 
 ### Data Layer
@@ -37,9 +37,10 @@ IniTool is an Android app for tracking initiative order in the tabletop RPG "Das
 
 ### Screen Flow
 
-1. **GegnerListScreen** (start destination) — add/edit/duplicate/remove enemies with name, ini, -4/-8 flags, 2W6 toggle
-2. **PlayerListScreen** — add/edit/remove players with name, ini, -4/-8 flags (persisted via Room)
-3. **KampfScreen** — merges players + enemies into `KampfEntry` list sorted by initiative descending. Enemies get a random W6 (or 2W6) roll added to their base ini. Features:
+1. **SplashScreen** (start destination) — zeigt Fanprojekt-Logo und DSA-Markenrechtshinweis, navigiert nach 5 Sekunden automatisch zum GegnerListScreen (wird aus dem Back-Stack entfernt)
+2. **GegnerListScreen** — add/edit/duplicate/remove enemies with name, ini, -4/-8 flags, 2W6 toggle
+3. **PlayerListScreen** — add/edit/remove players with name, ini, -4/-8 flags (persisted via Room)
+4. **KampfScreen** — merges players + enemies into `KampfEntry` list sorted by initiative descending. Enemies get a random W6 (or 2W6) roll added to their base ini. Features:
    - Highlight marker navigable via up/down buttons (up stops at top, down wraps around)
    - Auto-scroll (4 rows) when marker leaves visible area
    - +1/−1 buttons on base entries to adjust initiative (affects -4/-8 sub-entries too)
@@ -69,6 +70,10 @@ Bei Schema-Änderungen (neue Tabellen, neue Spalten, etc.):
 2. Explizite `Migration(oldVersion, newVersion)` schreiben mit den nötigen SQL-Statements
 3. Migration via `.addMigrations(...)` registrieren
 4. Bestehende Tabellen dürfen nicht verändert oder gelöscht werden, es sei denn explizit gewünscht
+
+## Git
+
+Das Projekt ist ein Git-Repository. **NIEMALS `git push` ausführen!** Push erfolgt ausschließlich manuell durch den Benutzer.
 
 ## Language
 
