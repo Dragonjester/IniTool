@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(source:*)",
+      "Bash(export ANDROID_HOME=/home/caa/android-sdk:*)",
+      "Bash(/home/caa/git/IniTool/gradlew:*)",
+      "Bash(./gradlew assembleDebug:*)",
+      "Bash(./gradlew kspDebugKotlin:*)",
+      "Bash(java -version:*)"
+    ]
+  }
+}
